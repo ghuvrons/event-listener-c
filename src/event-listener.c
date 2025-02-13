@@ -21,7 +21,9 @@ EL_Status_t EventListener_Init(EventListener_t *eListener, uint16_t listenersNb)
   eListener->listenerSz = listenersNb;
   if (eListener->listenerSz == 0) return EL_ERROR;
 
-  eListener->listeners = EL_MALLOC(sizeof(Listener_t) * listenersNb);
+  if (eListener->listeners == 0) {
+    eListener->listeners = EL_MALLOC(sizeof(Listener_t) * listenersNb);
+  }
   eListener->singleEventListenerNb = 0;
   eListener->multEventListenerNb = 0;
   return EL_OK;
