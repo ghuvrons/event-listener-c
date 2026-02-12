@@ -18,6 +18,10 @@
 #define EL_MALLOC(sz) malloc(sz)
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**** Exported Types **********************/
 
 typedef enum {
@@ -65,4 +69,9 @@ EL_Status_t EventListener_Init(EventListener_t*, uint16_t listenersNb);
 EL_Status_t EventListener_On(EventListener_t*, Event_t, EventCallback_t);
 EL_Status_t EventListener_OnMultiple(EventListener_t*, EventFilter_t*, EventCallback_t);
 EL_Status_t EventListener_Handle(EventListener_t*, Event_t, void *data, uint16_t dataSz);
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif /* EVENT_LISTENER_H_ */
